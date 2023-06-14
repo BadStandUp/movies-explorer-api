@@ -35,7 +35,7 @@ module.exports.updateUser = (req, res, info, next) => {
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
-        next(new IncorrectError(`${INCORRECT_ERROR_MESSAGE} при обновлении пользователя`));
+        return next(new IncorrectError(`${INCORRECT_ERROR_MESSAGE} при обновлении пользователя`));
       }
       return next(err);
     });

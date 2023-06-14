@@ -37,12 +37,11 @@ app.use(limiter);
 app.use(helmet());
 app.use(cors(whitelist));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.use('/', router);
 
 app.use(errorLogger);
-
 app.use(errors());
 app.use(errorHandler);
 
