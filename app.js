@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose').default;
 require('dotenv').config();
-const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const cors = require('cors');
 const { errors } = require('celebrate');
@@ -13,30 +12,32 @@ const { errorHandler } = require('./middleware/errors.middleware');
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/bitfilmsdb';
 if (!process.env.JWT_SECRET) {
-  process.env.JWT_SECRET = 'some-secret-key';
+    process.env.JWT_SECRET = 'some-secret-key';
 }
 
 mongoose.connect(MONGODB_URI)
-  .then(() => console.log('Connected'))
-  .catch((err) => {
-    console.log(err);
-  });
+    .then(() => console.log('Connected'))
+    .catch((err) => {
+        console.log(err);
+    });
 
-const whitelist = {
-  origin: [
+const whitelist = [
     'https://api.kino.nomoredomains.rocks',
     'http://api.kino.nomoredomains.rocks',
     'http://localhost:3000',
-  ],
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-};
+    'http://localhost:5173',
+];
 
 const app = express();
 app.use(requestLogger);
 app.use(limiter);
 app.use(helmet());
-app.use(cors(whitelist));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors({
+    origin: whitelist,
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+}));
+
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use('/', router);
@@ -46,5 +47,5 @@ app.use(errors());
 app.use(errorHandler);
 
 app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
+    console.log(`App listening on port ${PORT}`);
 });

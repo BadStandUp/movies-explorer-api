@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Movie = require('../models/user.model');
+const Movie = require('../models/movie.model');
 
 const {
   NOT_FOUND_MOVIE_MESSAGE,
