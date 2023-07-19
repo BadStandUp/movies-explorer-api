@@ -22,8 +22,8 @@ mongoose.connect(MONGODB_URI)
     });
 
 const whitelist = [
-    'https://api.kino.nomoredomains.rocks',
-    'http://api.kino.nomoredomains.rocks',
+    'https://kino.nomoredomains.rocks',
+    'http://kino.nomoredomains.rocks',
     'http://localhost:3000',
     'http://localhost:5173',
 ];
