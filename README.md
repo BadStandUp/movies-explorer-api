@@ -1,8 +1,6 @@
-# movies-explorer-api
-
+# Movies Explorer API
+Бэкенд проекта по поиску фильмов. \
 [Адрес API](https://api.kino.nomoredomains.rocks)
-
-Бэкенд проекта по поиску фильмов.
 
 ### Функционал
 
