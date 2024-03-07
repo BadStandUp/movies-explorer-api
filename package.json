@@ -2,12 +2,12 @@
   "name": "movies-explorer-api",
   "version": "1.0.0",
   "description": "Бэкенд проекта по поиску фильмов.",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx eslint . --fix",
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "Sam",
   "license": "ISC",
