@@ -22,10 +22,10 @@ mongoose.connect(MONGODB_URI)
   });
 
 const whitelist = [
-  'https://kino.nomoredomains.rocks',
-  'http://kino.nomoredomains.rocks',
   'http://localhost:3000',
   'http://localhost:5173',
+  'https://kino-explorer.vercel.app',
+  process.env.BASE_URL,
 ];
 
 const app = express();
